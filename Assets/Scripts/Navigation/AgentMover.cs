@@ -20,7 +20,7 @@ public class AgentMover : MonoBehaviour {
     [SerializeField] private Areas areaResistence = Areas.Walkable;
     [SerializeField] private Areas preferredArea = Areas.Grass;
     private void Start(){
-        playerControls.GoalSelected.AddListener(SetDestination);
+        playerControls.GoalSelectedAction += SetDestination;
 
         //Sets cost of specific resisted area to 1
         agent.SetAreaCost((int)areaResistence, 1);
