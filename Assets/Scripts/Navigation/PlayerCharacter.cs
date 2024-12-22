@@ -10,7 +10,7 @@ public enum Areas {
     Grass,
     Gravel
 }
-public class AgentMover : MonoBehaviour {
+public class PlayerCharacter : MonoBehaviour {
     [Header("References")]
     [SerializeField] private NavMeshAgent agent;
 
@@ -19,6 +19,15 @@ public class AgentMover : MonoBehaviour {
     [Header("Agent Data")]
     [SerializeField] private Areas areaResistence = Areas.Walkable;
     [SerializeField] private Areas preferredArea = Areas.Grass;
+
+    [SerializeField] private float MaxHP = 20;
+
+    private float currentHP = 0;
+
+    private void OnEnable(){
+        currentHP = MaxHP;
+    }
+    
     private void Start(){
         playerControls.GoalSelectedAction += SetDestination;
 
@@ -29,5 +38,9 @@ public class AgentMover : MonoBehaviour {
 
     private void SetDestination(Vector3 destination){
         agent.SetDestination(destination);
+    }
+
+    public void TakeDamage(float Damage){
+        currentHP -= Damage;
     }
 }

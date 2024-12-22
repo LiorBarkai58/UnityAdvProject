@@ -1,13 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class DartTrap : MonoBehaviour {
 
     [SerializeField] private Dart dart;
+    [SerializeField] private ParticleSystem dartHitParticle;
 
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private Transform shootingTarget;
+
+    public event UnityAction<PlayerHitData> onPlayerHit;
 
     private void Start(){
         StartCoroutine(ShootingCycle());
@@ -23,6 +27,9 @@ public class DartTrap : MonoBehaviour {
     }
 
     private void OnDartHit(DartHitArgs dartHitArgs){
+        ParticleSystem currentHitEffect = Instantiate(dartHitParticle, dartHitArgs.dartHit.transform.position,Quaternion.identity);
+        currentHitEffect.Play();
+        onPlayerHit?.Invoke(new PlayerHitData{PlayerHit = dartHitArgs.playerHit, Damage = dartHitArgs.Damage});
         Destroy(dartHitArgs.dartHit.gameObject);
     }
 }

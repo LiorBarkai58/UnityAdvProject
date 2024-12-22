@@ -6,6 +6,8 @@ public class Dart : MonoBehaviour {
 
     [SerializeField] private float DartSpeed = 5;
 
+    [SerializeField] private float Damage = 1;
+
     private Vector3 direction = new Vector3(0, 0, 1);
 
     public event UnityAction<DartHitArgs> OnDartHitAction;
@@ -23,7 +25,7 @@ public class Dart : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){
-            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this, agentHit = other.GetComponent<AgentMover>()});
+            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = this.Damage, playerHit = other.GetComponent<PlayerCharacter>()});
         }
     }
 }
@@ -31,7 +33,9 @@ public class Dart : MonoBehaviour {
 public struct DartHitArgs {
     public Dart dartHit;
 
-    public AgentMover agentHit;
+    public float Damage;
+
+    public PlayerCharacter playerHit;
 
 
 }

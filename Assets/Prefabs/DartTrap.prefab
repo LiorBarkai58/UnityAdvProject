@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dart: {fileID: 3065992385978438223, guid: 7559b92ab70d44d449b36a525ff3ac5c, type: 3}
+  dartHitParticle: {fileID: 3282562343792632950, guid: 516e32484e4c23b459246080755b8ffe, type: 3}
   shootingPoint: {fileID: 8370659777946239182}
   shootingTarget: {fileID: 4569459279759898770}
 --- !u!1 &7815923024924791816
