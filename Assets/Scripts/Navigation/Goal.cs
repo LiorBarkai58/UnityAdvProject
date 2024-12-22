@@ -5,6 +5,8 @@ public class Goal : MonoBehaviour
 {
     [HideInInspector] public UnityEvent<string> AgentArrived = new UnityEvent<string>();
 
+    
+
     private bool _goalReached = false;
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){
