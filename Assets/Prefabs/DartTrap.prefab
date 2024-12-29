@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbe5aab0f20d234b83567a6d90ced39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dart: {fileID: 3065992385978438223, guid: 7559b92ab70d44d449b36a525ff3ac5c, type: 3}
+  dart: {fileID: 8759275743632940433, guid: 3d360fd6fb31691448f62c5448b3cfc1, type: 3}
   dartHitParticle: {fileID: 3282562343792632950, guid: 516e32484e4c23b459246080755b8ffe, type: 3}
   shootingPoint: {fileID: 8370659777946239182}
   shootingTarget: {fileID: 4569459279759898770}

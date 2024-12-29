@@ -16,15 +16,13 @@ public class Dart : MonoBehaviour {
     private void FixedUpdate(){
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, dartData.DartSpeed * Time.fixedDeltaTime);
     }
-
-    public void SetDirection(Vector3 direction){
-        this.direction = direction;
-    }
-
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){
             OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = dartData.DartDamage, playerHit = other.GetComponent<PlayerCharacter>()});
         }
+    }
+    public void SetDirection(Vector3 direction){
+        this.direction = direction;
     }
 }
 
