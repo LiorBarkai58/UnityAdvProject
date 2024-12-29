@@ -4,9 +4,7 @@ using UnityEngine.Events;
 
 public class Dart : MonoBehaviour {
 
-    [SerializeField] private float DartSpeed = 5;
-
-    [SerializeField] private float Damage = 1;
+    [SerializeField] private DartData dartData;
 
     private Vector3 direction = new Vector3(0, 0, 1);
 
@@ -16,7 +14,7 @@ public class Dart : MonoBehaviour {
         Destroy(gameObject, 5f);
     }
     private void FixedUpdate(){
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, DartSpeed * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, dartData.DartSpeed * Time.fixedDeltaTime);
     }
 
     public void SetDirection(Vector3 direction){
@@ -25,7 +23,7 @@ public class Dart : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){
-            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = this.Damage, playerHit = other.GetComponent<PlayerCharacter>()});
+            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = dartData.DartDamage, playerHit = other.GetComponent<PlayerCharacter>()});
         }
     }
 }

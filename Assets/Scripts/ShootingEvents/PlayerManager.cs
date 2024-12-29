@@ -15,7 +15,6 @@ public class PlayerManager : MonoBehaviour {
 
     private void OnPlayerHit(PlayerHitData playerHitData){
         playerHitData.PlayerHit.TakeDamage(playerHitData.Damage);
-        Debug.Log("Player took damage");
     }
 }
 

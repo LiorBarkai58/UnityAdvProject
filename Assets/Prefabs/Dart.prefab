@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837daf4bfd287ed4d82d3665652c1a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DartSpeed: 5
+  dartData: {fileID: 11400000, guid: a13b8d27b95f57845bf02ab764647c2c, type: 2}
 --- !u!54 &5392528748517014641
 Rigidbody:
   m_ObjectHideFlags: 0
