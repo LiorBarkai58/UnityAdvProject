@@ -5,8 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent<Vector3> GoalSelected = new UnityEvent<Vector3>();
+    [SerializeField] private UnityEvent<Vector3> GoalSelected = new UnityEvent<Vector3>();
+
+    public event UnityAction<Vector3> GoalSelectedAction;
     [SerializeField] private LayerMask groundLayer;
+
+    
     
     public void OnMouseInput(InputAction.CallbackContext context){
         if(context.started){//When mouse was clicked
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
             if(Physics.Raycast(ray, out hit, 100, groundLayer)){//Send a ray to ground
                 Debug.Log($"hit ground {hit.point}");
                 GoalSelected.Invoke(hit.point);
+                GoalSelectedAction?.Invoke(hit.point);
             }
         }
      }

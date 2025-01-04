@@ -13,13 +13,13 @@ public class UIController : MonoBehaviour {
 
     private void Start(){
         if(playerController != null){
-            playerController.GoalSelected.AddListener(Vector3 => HideTutorial());//This is done to ignore the vector3 variable the event sends
+            playerController.GoalSelectedAction += Vector3 => HideTutorial();//This is done to ignore the vector3 variable the event sends
         }
         else{
             Debug.LogWarning("Missing player controller reference");
         }
         if(goal != null){
-            goal.AgentArrived.AddListener(ShowWinner);
+            goal.AgentArrivedAction += ShowWinner;
         }
         else{
             Debug.LogWarning("Missing goal reference");
