@@ -13,6 +13,7 @@ public class DartTrap : MonoBehaviour {
 
     public event UnityAction<PlayerHitData> onPlayerHit;
 
+
     private void Start(){
         StartCoroutine(ShootingCycle());
     }
@@ -22,6 +23,7 @@ public class DartTrap : MonoBehaviour {
             Dart currentDart = Instantiate(dart, shootingPoint.position, Quaternion.identity);
             currentDart.SetDirection((shootingTarget.position - shootingPoint.position).normalized);
             currentDart.OnDartHitAction += OnDartHit;
+            
             yield return new WaitForSeconds(5);
         }
     }
@@ -30,6 +32,7 @@ public class DartTrap : MonoBehaviour {
         ParticleSystem currentHitEffect = Instantiate(dartHitParticle, dartHitArgs.dartHit.transform.position,Quaternion.identity);
         currentHitEffect.Play();
         onPlayerHit?.Invoke(new PlayerHitData{PlayerHit = dartHitArgs.playerHit, Damage = dartHitArgs.Damage});
+        dartHitArgs.dartHit.OnDartHitAction -= OnDartHit;//Wondering if this is needed, or this is taken care of internally by the system once the gameobject associated with the subscribed function is destroyed
         Destroy(dartHitArgs.dartHit.gameObject);
     }
 }

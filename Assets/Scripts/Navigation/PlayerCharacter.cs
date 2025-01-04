@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public enum Areas {
     Walkable,
@@ -22,6 +23,8 @@ public class PlayerCharacter : MonoBehaviour {
 
     [SerializeField] private float MaxHP = 20;
 
+    [SerializeField] public UnityEvent playerTakeDamageEvent = new UnityEvent() ;
+
     private float currentHP = 0;
 
     private void OnEnable(){
@@ -42,5 +45,6 @@ public class PlayerCharacter : MonoBehaviour {
 
     public void TakeDamage(float Damage){
         currentHP -= Damage;
+        playerTakeDamageEvent.Invoke();
     }
 }

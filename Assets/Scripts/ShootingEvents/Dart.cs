@@ -10,6 +10,7 @@ public class Dart : MonoBehaviour {
 
     public event UnityAction<DartHitArgs> OnDartHitAction;
 
+
     private void OnEnable(){
         Destroy(gameObject, 5f);
     }
