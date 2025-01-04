@@ -6,6 +6,8 @@ public class Dart : MonoBehaviour {
 
     [SerializeField] private DartData dartData;
 
+    public DartData DartData {get {return dartData;}}
+
     private Vector3 direction = new Vector3(0, 0, 1);
 
     public event UnityAction<DartHitArgs> OnDartHitAction;

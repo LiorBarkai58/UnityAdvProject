@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class DartTrap : MonoBehaviour {
 
     [SerializeField] private DartTrapOptions dartOptions;
+    [SerializeField] private DartData dartPreference;
     [SerializeField] private ParticleSystem dartHitParticle;
 
     [SerializeField] private Transform shootingPoint;
@@ -20,7 +21,7 @@ public class DartTrap : MonoBehaviour {
 
     private IEnumerator ShootingCycle(){
         while(true){
-            Dart currentDart = Instantiate(dartOptions.GetRandomPrefab(), shootingPoint.position, Quaternion.identity);
+            Dart currentDart = Instantiate(dartOptions.GetRandomPrefab(dartPreference), shootingPoint.position, Quaternion.identity);
             currentDart.SetDirection((shootingTarget.position - shootingPoint.position).normalized);
             currentDart.OnDartHitAction += OnDartHit;
             
