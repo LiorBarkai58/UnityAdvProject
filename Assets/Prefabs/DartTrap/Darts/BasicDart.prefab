@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3405791408477600937}
   - component: {fileID: 6870401310277257401}
   m_Layer: 0
-  m_Name: Dart
+  m_Name: BasicDart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,21 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dartData: {fileID: 11400000, guid: a13b8d27b95f57845bf02ab764647c2c, type: 2}
-  OnDartHitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6903788158065893061}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!135 &3405791408477600937
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -176,7 +161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5b917a8f2a748b847b33509ed5c61b4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -258,10 +243,5 @@ PrefabInstance:
 --- !u!4 &2716444596204823550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6337567674592450893, guid: 516e32484e4c23b459246080755b8ffe, type: 3}
-  m_PrefabInstance: {fileID: 8232914160598760115}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6903788158065893061 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3282562343792632950, guid: 516e32484e4c23b459246080755b8ffe, type: 3}
   m_PrefabInstance: {fileID: 8232914160598760115}
   m_PrefabAsset: {fileID: 0}

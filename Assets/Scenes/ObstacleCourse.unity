@@ -5839,6 +5839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DartTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 8402364305860141177, guid: ddc4be4d563c9a446b78a2cc30db3839, type: 3}
+      propertyPath: dartOptions
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e8ed67ee24ef264f8e3ae79655197ce, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
