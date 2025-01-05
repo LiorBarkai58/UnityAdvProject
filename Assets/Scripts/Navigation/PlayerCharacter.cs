@@ -17,6 +17,8 @@ public class PlayerCharacter : MonoBehaviour {
 
     [SerializeField] private PlayerController playerControls;
 
+    [SerializeField] private Animator animator;
+
     [Header("Agent Data")]
     [SerializeField] private Areas areaResistence = Areas.Walkable;
     [SerializeField] private Areas preferredArea = Areas.Grass;
@@ -37,6 +39,12 @@ public class PlayerCharacter : MonoBehaviour {
         //Sets cost of specific resisted area to 1
         agent.SetAreaCost((int)areaResistence, 1);
         agent.SetAreaCost((int)preferredArea, 1);
+    }
+
+    private void Update(){
+        if(animator != null){
+            animator.SetBool("Moving", agent.remainingDistance > 0.1);
+        }
     }
 
     private void SetDestination(Vector3 destination){
