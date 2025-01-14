@@ -29,6 +29,10 @@ public class PlayerCharacter : MonoBehaviour {
 
     private float currentHP = 0;
 
+    private static readonly int SpeedHash = Animator.StringToHash("Speed");
+
+    private static readonly int JumpingHash = Animator.StringToHash("Jumping");
+
     private void OnEnable(){
         currentHP = MaxHP;
     }
@@ -43,7 +47,13 @@ public class PlayerCharacter : MonoBehaviour {
 
     private void Update(){
         if(animator != null){
-            animator.SetBool("Moving", agent.remainingDistance > 0.1);
+            animator.SetFloat(SpeedHash, agent.velocity.magnitude/agent.speed);
+        }
+        if(agent.isOnOffMeshLink){
+            animator.SetBool(JumpingHash, true);
+        }
+        else{
+            animator.SetBool(JumpingHash, false);
         }
     }
 
