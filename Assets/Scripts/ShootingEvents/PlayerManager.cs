@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour {
 }
 
 public class PlayerHitData {
-    public PlayerCharacter PlayerHit;
+    public GuardCharacter PlayerHit;
 
     public float Damage;
 

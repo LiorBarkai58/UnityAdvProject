@@ -11,7 +11,7 @@ public enum Areas {
     Grass,
     Gravel
 }
-public class PlayerCharacter : MonoBehaviour {
+public class GuardCharacter : MonoBehaviour {
     [Header("References")]
     [SerializeField] private NavMeshAgent agent;
 
