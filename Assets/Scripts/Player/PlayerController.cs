@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastingSpeedMultiplier = 1;
 
+    [SerializeField] private float CastCooldown = 3;
+
+
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int CastingSpeed = Animator.StringToHash("CastingSpeed");
     private static readonly int Cast = Animator.StringToHash("Cast");
@@ -28,6 +32,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 _lookInput;
 
     private Vector3 _lookDirection;
+
+    private bool _castOnCooldown = false;
+
+    private bool _isCasting = false;
+
 
     void Start(){
         Cursor.lockState = CursorLockMode.Locked;
@@ -56,6 +65,7 @@ public class PlayerController : MonoBehaviour
      public void OnAttack(InputAction.CallbackContext context){
         if(context.started){
             animator.SetTrigger(Cast);
+            
         }
      }
 
@@ -69,6 +79,30 @@ public class PlayerController : MonoBehaviour
      public void UpdateCastingSpeed(){
         animator.SetFloat(CastingSpeed, CastingSpeedMultiplier);
         
+     }
+
+     private IEnumerator StartCastCooldown(){
+        _castOnCooldown = true;
+        yield return new WaitForSeconds(CastCooldown);
+        _castOnCooldown = false;
+        if(!_isCasting){
+            animator.SetLayerWeight(1, 1);
+        }
+     }
+
+     public void OnCastEnd(){
+        StartCoroutine(StartCastCooldown());
+        _isCasting = false;
+        if(!_castOnCooldown){
+            animator.SetLayerWeight(1, 1f);
+        }
+        else{
+            animator.SetLayerWeight(1, 0.4f); 
+        }
+     }
+
+     public void OnCastStart(){
+        _isCasting = true;
      }
 
      
