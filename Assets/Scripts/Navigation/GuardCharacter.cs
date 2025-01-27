@@ -38,7 +38,6 @@ public class GuardCharacter : MonoBehaviour {
     }
     
     private void Start(){
-        playerControls.GoalSelectedAction += SetDestination;
 
         //Sets cost of specific resisted area to 1
         agent.SetAreaCost((int)areaResistence, 1);
