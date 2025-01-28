@@ -12,12 +12,7 @@ public class UIController : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI WinnerDisplay;//Text that displays the winning agent
 
     private void Start(){
-        if(playerController != null){
-            playerController.GoalSelectedAction += Vector3 => HideTutorial();//This is done to ignore the vector3 variable the event sends
-        }
-        else{
-            Debug.LogWarning("Missing player controller reference");
-        }
+        
         if(goal != null){
             goal.AgentArrivedAction += ShowWinner;
         }

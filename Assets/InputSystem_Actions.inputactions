@@ -6,9 +6,36 @@
             "id": "4475475d-e6cb-4a88-90d7-eb7ba80e1740",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Cast",
                     "type": "Button",
                     "id": "c4b00f78-4e04-4079-bbc4-b17104762bfc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "c088f12b-d29f-43c3-816f-085fe120a0ff",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "4f2166df-fab8-46ab-8b6f-16728ad8e980",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "42831674-b87b-4077-ac42-fa5565bd77d4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -19,6 +46,39 @@
                 {
                     "name": "",
                     "id": "d97db097-6db2-46cd-a6c7-257f5a33ffe4",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46c7ffc6-bbfe-42cf-9608-24f1d4c50e66",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e303520-1689-4cef-9988-e619f84ee2c5",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a904ef0-6bf3-4997-a8c6-edfcba1f3e33",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",

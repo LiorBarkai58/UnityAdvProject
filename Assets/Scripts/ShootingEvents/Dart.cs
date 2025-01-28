@@ -21,7 +21,7 @@ public class Dart : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Player")){
-            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = dartData.DartDamage, playerHit = other.GetComponent<PlayerCharacter>()});
+            OnDartHitAction.Invoke(new DartHitArgs{dartHit = this,Damage = dartData.DartDamage, playerHit = other.GetComponentInParent<PlayerController>()});
         }
     }
     public void SetDirection(Vector3 direction){
@@ -34,7 +34,7 @@ public struct DartHitArgs {
 
     public float Damage;
 
-    public PlayerCharacter playerHit;
+    public PlayerController playerHit;
 
 
 }
