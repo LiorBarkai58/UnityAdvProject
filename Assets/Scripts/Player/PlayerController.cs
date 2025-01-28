@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
@@ -36,7 +37,6 @@ public class PlayerController : MonoBehaviour
    private static readonly int SpeedHash = Animator.StringToHash("Speed");
    private static readonly int CastingSpeed = Animator.StringToHash("CastingSpeed");
    private static readonly int CastHash = Animator.StringToHash("Cast");
-   private static readonly int JumpHash = Animator.StringToHash("Jump");
    private static readonly int OnLinkHash = Animator.StringToHash("OnLink");
 
    private bool _castOnCooldown = false;
@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
    public void OnAttack(InputAction.CallbackContext context){
         if(context.started){
             animator.SetTrigger(CastHash);
-            
         }
      }
 
@@ -107,18 +106,20 @@ public class PlayerController : MonoBehaviour
    }
 
    public void OnCastEnd(){
-      StartCoroutine(StartCastCooldown());
       _isCasting = false;
+      
+   }
+
+   public void OnCastStart(){
       if(!_castOnCooldown){
          animator.SetLayerWeight(1, 1f);
+         StartCoroutine(StartCastCooldown());
       }
       else{
          animator.SetLayerWeight(1, 0.4f); 
       }
-   }
-
-   public void OnCastStart(){
       _isCasting = true;
+      
    }
 
    public void OnJumpStart(){
