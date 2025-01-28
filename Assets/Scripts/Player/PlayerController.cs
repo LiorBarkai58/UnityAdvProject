@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
          Ray ray = Camera.main.ScreenPointToRay(mousePosition);//Create a ray
          RaycastHit hit;
          if(Physics.Raycast(ray, out hit, 100, groundLayer)){//Send a ray to ground
-               Debug.Log($"hit ground {hit.point}");
                agent.SetDestination(hit.point);//send agent to position clicked
          }
       }
