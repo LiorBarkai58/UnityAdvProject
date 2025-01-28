@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,9 +8,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private CharacterController characterController;
 
     [SerializeField] private Animator animator;
+
+    [SerializeField] private CinemachineCamera FollowCam;
 
     [SerializeField] private float Speed = 6;
 
@@ -45,12 +48,13 @@ public class PlayerController : MonoBehaviour
     void Update(){
         _movementDirection = transform.forward * _movementInput.y + transform.right * _movementInput.x;
         _movementDirection.y = 0;
-        transform.Rotate(_lookDirection * 10 * Time.deltaTime);
+        Vector3 newVelocity = Vector3.Lerp(characterController.velocity, _movementDirection * Speed, Acceleration * Time.deltaTime);
+        characterController.Move(newVelocity*Time.deltaTime);
+        animator.SetFloat(SpeedHash, characterController.velocity.magnitude/Speed);//current velocity/maxvelocity
 
-    }
+          }
     void FixedUpdate(){
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, _movementDirection * Speed, Acceleration*Time.deltaTime);
-        animator.SetFloat(SpeedHash, rb.linearVelocity.magnitude/Speed);//current velocity/maxvelocity
+        
 
     }
 
